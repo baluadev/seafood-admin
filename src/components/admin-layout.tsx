@@ -23,9 +23,9 @@ export function AdminLayout({ children, title }: { children: React.ReactNode; ti
       <aside className="admin-sidebar">
         <div className="sidebar-logo">
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <span style={{ fontSize: '1.5rem' }}>🦐</span>
+            <span style={{ fontSize: '1.5rem' }}>🏠</span>
             <span style={{ fontWeight: 800, fontSize: '1.125rem', color: 'white' }}>
-              Sea<span style={{ color: 'var(--primary)' }}>Shop</span>
+              Tạp hóa<span style={{ color: 'var(--primary)' }}> SIN</span>
               <span style={{ fontSize: '0.6875rem', background: 'var(--primary)', color: 'white', borderRadius: '4px', padding: '1px 6px', marginLeft: '6px', fontWeight: 700 }}>ADMIN</span>
             </span>
           </div>
