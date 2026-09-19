@@ -6,6 +6,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { AdminLayout } from '@/components/admin-layout';
 import { adminApi } from '@/lib/admin-api';
 import { useAdminAuth } from '@/store/admin-auth.store';
+import { ImageUploader } from '@/components/image-uploader';
 
 const EMPTY = { name: '', slug: '', imageUrl: '', description: '', isActive: true, sortOrder: '0' };
 
@@ -112,10 +113,12 @@ export default function AdminCategoriesPage() {
                   <label className="form-label">Slug *</label>
                   <input className="form-input" required value={form.slug} onChange={e => setForm((p: any) => ({ ...p, slug: e.target.value }))} placeholder="tom" />
                 </div>
-                <div className="form-group">
-                  <label className="form-label">URL ảnh</label>
-                  <input className="form-input" type="url" value={form.imageUrl} onChange={e => setForm((p: any) => ({ ...p, imageUrl: e.target.value }))} placeholder="https://..." />
-                </div>
+                <ImageUploader
+                  value={form.imageUrl}
+                  onChange={(url) => setForm((p: any) => ({ ...p, imageUrl: url }))}
+                  label="Ảnh danh mục"
+                  folder="categories"
+                />
                 <div className="form-group">
                   <label className="form-label">Thứ tự hiển thị</label>
                   <input className="form-input" type="number" min="0" value={form.sortOrder} onChange={e => setForm((p: any) => ({ ...p, sortOrder: e.target.value }))} />

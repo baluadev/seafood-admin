@@ -6,6 +6,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { AdminLayout } from '@/components/admin-layout';
 import { adminApi } from '@/lib/admin-api';
 import { useAdminAuth } from '@/store/admin-auth.store';
+import { ImageUploader } from '@/components/image-uploader';
 
 const EMPTY = { title: '', subtitle: '', description: '', imageUrl: '', linkUrl: '', isActive: true, sortOrder: '0' };
 
@@ -117,10 +118,12 @@ export default function AdminSlidersPage() {
                   <label className="form-label">Mô tả</label>
                   <textarea className="form-input" rows={2} value={form.description} onChange={e => setForm((p: any) => ({ ...p, description: e.target.value }))} style={{ resize: 'vertical' }} />
                 </div>
-                <div className="form-group">
-                  <label className="form-label">URL ảnh *</label>
-                  <input className="form-input" type="url" required value={form.imageUrl} onChange={e => setForm((p: any) => ({ ...p, imageUrl: e.target.value }))} placeholder="https://..." />
-                </div>
+                <ImageUploader
+                  value={form.imageUrl}
+                  onChange={(url) => setForm((p: any) => ({ ...p, imageUrl: url }))}
+                  label="Ảnh slider *"
+                  folder="sliders"
+                />
                 <div className="form-group">
                   <label className="form-label">Link khi click</label>
                   <input className="form-input" value={form.linkUrl} onChange={e => setForm((p: any) => ({ ...p, linkUrl: e.target.value }))} placeholder="/shop" />

@@ -8,9 +8,10 @@ interface ImageUploaderProps {
   value: string;
   onChange: (url: string) => void;
   label?: string;
+  folder?: string;
 }
 
-export function ImageUploader({ value, onChange, label = 'Ảnh' }: ImageUploaderProps) {
+export function ImageUploader({ value, onChange, label = 'Ảnh', folder = 'products' }: ImageUploaderProps) {
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
@@ -25,7 +26,7 @@ export function ImageUploader({ value, onChange, label = 'Ảnh' }: ImageUploade
       const { data: { uploadUrl, publicUrl } } = await api.post('/upload/signed-url', {
         filename: file.name,
         contentType: file.type,
-        folder: 'products',
+        folder,
       });
 
       // 2. Upload directly to Supabase Storage
