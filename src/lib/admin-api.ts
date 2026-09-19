@@ -35,4 +35,11 @@ export const adminApi = {
     getOne: (id: string) => api.get(`/orders/${id}`).then(r => r.data),
     updateStatus: (id: string, status: string) => api.patch(`/orders/admin/${id}/status`, { status }).then(r => r.data),
   },
+
+  // Users
+  users: {
+    getAll: (params?: object) => api.get('/users/admin', { params }).then(r => r.data),
+    getOne: (id: string) => api.get(`/users/admin/${id}`).then(r => r.data),
+    toggleActive: (id: string) => api.patch(`/users/admin/${id}/toggle-active`).then(r => r.data),
+  },
 };
