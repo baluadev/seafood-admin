@@ -10,7 +10,7 @@ export const adminApi = {
     getOne: (id: string) => api.get(`/products/${id}`).then(r => r.data),
     create: (data: object) => api.post('/products', data).then(r => r.data),
     update: (id: string, data: object) => api.patch(`/products/${id}`, data).then(r => r.data),
-    delete: (id: string) => api.delete(`/products/${id}`).then(r => r.data),
+    toggleActive: (id: string) => api.patch(`/products/${id}/toggle-active`).then(r => r.data),
   },
 
   // Categories
@@ -18,7 +18,7 @@ export const adminApi = {
     getAll: () => api.get('/categories', { params: { all: true } }).then(r => r.data),
     create: (data: object) => api.post('/categories', data).then(r => r.data),
     update: (id: string, data: object) => api.patch(`/categories/${id}`, data).then(r => r.data),
-    delete: (id: string) => api.delete(`/categories/${id}`).then(r => r.data),
+    toggleActive: (id: string) => api.patch(`/categories/${id}/toggle-active`).then(r => r.data),
   },
 
   // Sliders

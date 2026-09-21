@@ -36,13 +36,9 @@ export default function AdminCategoriesPage() {
     onSuccess: () => { qc.invalidateQueries({ queryKey: ['admin-categories'] }); setModal(null); },
   });
 
-  const deleteMut = useMutation({
-    mutationFn: (id: string) => adminApi.categories.delete(id),
+  const toggleMut = useMutation({
+    mutationFn: (id: string) => adminApi.categories.toggleActive(id),
     onSuccess: () => qc.invalidateQueries({ queryKey: ['admin-categories'] }),
-    onError: (err: any) => {
-      const msg = err?.response?.data?.message || 'Không thể xóa danh mục này';
-      alert('❌ ' + msg);
-    },
   });
 
   function openEdit(c: any) { setEditId(c.id); setForm({ name: c.name, slug: c.slug, imageUrl: c.imageUrl || '', description: c.description || '', isActive: c.isActive, sortOrder: String(c.sortOrder) }); setModal('edit'); }
@@ -89,7 +85,14 @@ export default function AdminCategoriesPage() {
                     <td>
                       <div style={{ display: 'flex', gap: '0.375rem' }}>
                         <button className="btn btn-outline btn-xs" onClick={() => openEdit(c)}>✏️ Sửa</button>
-                        <button className="btn btn-xs" style={{ background: '#fee2e2', color: '#dc2626' }} onClick={() => { if (confirm('Xóa danh mục này?')) deleteMut.mutate(c.id); }}>🗑️</button>
+                        <button
+                          className={`btn btn-xs ${c.isActive ? '' : 'btn-primary'}`}
+                          style={c.isActive ? { background: '#fef9c3', color: '#854d0e' } : {}}
+                          disabled={toggleMut.isPending}
+                          onClick={() => toggleMut.mutate(c.id)}
+                        >
+                          {c.isActive ? '🙈 Ẩn' : '👁️ Hiện'}
+                        </button>
                       </div>
                     </td>
                   </tr>

@@ -49,8 +49,8 @@ export default function AdminProductsPage() {
     onSuccess: () => { qc.invalidateQueries({ queryKey: ['admin-products'] }); setModal(null); },
   });
 
-  const deleteMutation = useMutation({
-    mutationFn: (id: string) => adminApi.products.delete(id),
+  const toggleMutation = useMutation({
+    mutationFn: (id: string) => adminApi.products.toggleActive(id),
     onSuccess: () => qc.invalidateQueries({ queryKey: ['admin-products'] }),
   });
 
@@ -125,7 +125,14 @@ export default function AdminProductsPage() {
                     <td>
                       <div style={{ display: 'flex', gap: '0.375rem' }}>
                         <button className="btn btn-outline btn-xs" onClick={() => openEdit(p)}>✏️ Sửa</button>
-                        <button className="btn btn-xs" style={{ background: '#fee2e2', color: '#dc2626' }} onClick={() => { if (confirm('Xóa sản phẩm này?')) deleteMutation.mutate(p.id); }}>🗑️</button>
+                        <button
+                          className={`btn btn-xs ${p.isActive ? '' : 'btn-primary'}`}
+                          style={p.isActive ? { background: '#fef9c3', color: '#854d0e' } : {}}
+                          disabled={toggleMutation.isPending}
+                          onClick={() => toggleMutation.mutate(p.id)}
+                        >
+                          {p.isActive ? '🙈 Ẩn' : '👁️ Hiện'}
+                        </button>
                       </div>
                     </td>
                   </tr>
