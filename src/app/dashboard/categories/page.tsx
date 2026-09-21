@@ -39,6 +39,10 @@ export default function AdminCategoriesPage() {
   const deleteMut = useMutation({
     mutationFn: (id: string) => adminApi.categories.delete(id),
     onSuccess: () => qc.invalidateQueries({ queryKey: ['admin-categories'] }),
+    onError: (err: any) => {
+      const msg = err?.response?.data?.message || 'Không thể xóa danh mục này';
+      alert('❌ ' + msg);
+    },
   });
 
   function openEdit(c: any) { setEditId(c.id); setForm({ name: c.name, slug: c.slug, imageUrl: c.imageUrl || '', description: c.description || '', isActive: c.isActive, sortOrder: String(c.sortOrder) }); setModal('edit'); }
