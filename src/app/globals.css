@@ -1,40 +1,44 @@
-/* SeaShop Admin Design System */
+/* Tạp hóa nhà SIN Admin Design System — inspired by Grocery App Big Cart */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
 :root {
-  --primary: #0ea5e9;
-  --primary-dark: #0284c7;
-  --sidebar-bg: #0f172a;
-  --sidebar-text: #94a3b8;
-  --sidebar-active: #0ea5e9;
-  --sidebar-hover: #1e293b;
+  --primary: #6CC51D;
+  --primary-dark: #4CAF18;
+  --primary-light: #EAF7E3;
+  --sidebar-bg: #1a2535;
+  --sidebar-text: #9ca8b8;
+  --sidebar-active: #6CC51D;
+  --sidebar-active-bg: rgba(108, 197, 29, 0.15);
+  --sidebar-hover: rgba(255,255,255,.06);
   --header-h: 64px;
   --sidebar-w: 240px;
 
-  --gray-50: #f8fafc;
-  --gray-100: #f1f5f9;
-  --gray-200: #e2e8f0;
-  --gray-300: #cbd5e1;
-  --gray-400: #94a3b8;
-  --gray-500: #64748b;
-  --gray-600: #475569;
-  --gray-700: #334155;
-  --gray-800: #1e293b;
-  --gray-900: #0f172a;
+  --gray-50: #F4F5F9;
+  --gray-100: #EBEBEB;
+  --gray-200: #E0E0E0;
+  --gray-300: #C8C8C8;
+  --gray-400: #9E9E9E;
+  --gray-500: #868889;
+  --gray-600: #575757;
+  --gray-700: #3A3A3A;
+  --gray-800: #1E1E1E;
+  --gray-900: #111111;
 
   --success: #22c55e;
   --warning: #f59e0b;
   --error: #ef4444;
   --accent: #f97316;
 
-  --radius-sm: 6px;
-  --radius-md: 10px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
   --radius-lg: 16px;
-  --shadow-sm: 0 1px 2px rgb(0 0 0/.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0/.1);
+  --shadow-sm: 0 1px 3px rgb(0 0 0/.07);
+  --shadow-md: 0 4px 12px -2px rgb(0 0 0/.1);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { font-family: 'Public Sans', sans-serif; color: var(--gray-800); background: var(--gray-50); -webkit-font-smoothing: antialiased; }
+body { font-family: 'Poppins', sans-serif; color: var(--gray-800); background: var(--gray-50); -webkit-font-smoothing: antialiased; }
 a { color: inherit; text-decoration: none; }
 button { cursor: pointer; font-family: inherit; border: none; background: none; }
 img { display: block; max-width: 100%; }
@@ -83,7 +87,7 @@ img { display: block; max-width: 100%; }
   margin-bottom: 2px;
 }
 .sidebar-nav-item:hover { background: var(--sidebar-hover); color: white; }
-.sidebar-nav-item.active { background: var(--sidebar-active); color: white; }
+.sidebar-nav-item.active { background: var(--sidebar-active-bg); color: var(--sidebar-active); font-weight: 600; }
 .sidebar-nav-item .icon { width: 20px; text-align: center; font-size: 1rem; }
 
 /* Cards */
