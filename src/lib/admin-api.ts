@@ -42,4 +42,12 @@ export const adminApi = {
     getOne: (id: string) => api.get(`/users/admin/${id}`).then(r => r.data),
     toggleActive: (id: string) => api.patch(`/users/admin/${id}/toggle-active`).then(r => r.data),
   },
+
+  // Promotions
+  promotions: {
+    getAll: () => api.get('/promotions/admin').then(r => r.data),
+    create: (data: object) => api.post('/promotions', data).then(r => r.data),
+    update: (id: string, data: object) => api.patch(`/promotions/${id}`, data).then(r => r.data),
+    delete: (id: string) => api.delete(`/promotions/${id}`).then(r => r.data),
+  },
 };
