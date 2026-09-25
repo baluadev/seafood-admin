@@ -50,4 +50,9 @@ export const adminApi = {
     update: (id: string, data: object) => api.patch(`/promotions/${id}`, data).then(r => r.data),
     delete: (id: string) => api.delete(`/promotions/${id}`).then(r => r.data),
   },
+
+  // Wishlist stats
+  wishlist: {
+    getStats: () => api.get('/wishlist/admin/stats').then(r => r.data),
+  },
 };

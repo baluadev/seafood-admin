@@ -22,6 +22,7 @@ export default function DashboardPage() {
   const { data: productsData } = useQuery({ queryKey: ['admin-products'], queryFn: () => adminApi.products.getAll({ limit: 1 }), enabled: isAuthenticated });
   const { data: categoriesData } = useQuery({ queryKey: ['admin-categories'], queryFn: adminApi.categories.getAll, enabled: isAuthenticated });
   const { data: ordersData } = useQuery({ queryKey: ['admin-orders'], queryFn: () => adminApi.orders.getAll({ limit: 5 }), enabled: isAuthenticated });
+  const { data: wishlistStats } = useQuery({ queryKey: ['admin-wishlist-stats'], queryFn: adminApi.wishlist.getStats, enabled: isAuthenticated });
 
   if (!isAuthenticated) return null;
 
@@ -38,6 +39,7 @@ export default function DashboardPage() {
     { icon: '📂', label: 'Danh mục', value: categoriesData?.length ?? '…', color: '#8b5cf6' },
     { icon: '📦', label: 'Tổng đơn hàng', value: ordersData?.meta?.total ?? '…', color: 'var(--accent)' },
     { icon: '⏳', label: 'Chờ xử lý', value: ordersData?.data?.filter((o: any) => o.status === 'PENDING').length ?? '…', color: 'var(--warning)' },
+    { icon: '❤️', label: 'Lượt yêu thích', value: wishlistStats?.total ?? '…', color: '#ef4444' },
   ];
 
   return (
