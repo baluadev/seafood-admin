@@ -131,6 +131,11 @@ export default function AdminProductsPage() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (!form.categoryId) {
+      alert('Vui lòng chọn danh mục sản phẩm (Tab Cơ bản)');
+      setActiveTab(0);
+      return;
+    }
     const hasNutrition = Object.values(form.nutritionInfo).some(v => v.trim());
     const payload = {
       ...form,
