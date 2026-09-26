@@ -55,4 +55,13 @@ export const adminApi = {
   wishlist: {
     getStats: () => api.get('/wishlist/admin/stats').then(r => r.data),
   },
+
+  // Coupons
+  coupons: {
+    getAll: () => api.get('/coupons').then(r => r.data),
+    getOne: (id: string) => api.get(`/coupons/${id}`).then(r => r.data),
+    create: (data: object) => api.post('/coupons', data).then(r => r.data),
+    update: (id: string, data: object) => api.patch(`/coupons/${id}`, data).then(r => r.data),
+    delete: (id: string) => api.delete(`/coupons/${id}`).then(r => r.data),
+  },
 };

@@ -10,6 +10,7 @@ const NAV = [
   { href: '/dashboard/categories', icon: '📂', label: 'Danh mục' },
   { href: '/dashboard/sliders', icon: '🖼️', label: 'Sliders' },
   { href: '/dashboard/promotions', icon: '🎯', label: 'Promotions' },
+  { href: '/dashboard/coupons', icon: '🎫', label: 'Mã giảm giá' },
   { href: '/dashboard/orders', icon: '📦', label: 'Đơn hàng' },
   { href: '/dashboard/users', icon: '👥', label: 'Người dùng' },
 ];
